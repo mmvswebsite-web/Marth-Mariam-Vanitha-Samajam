@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<!-- Gallery page -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery — Martha Mariam Vanitha Samajam</title>
+
+  <!-- Main site CSS — controls nav, footer, fonts, shared styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Poppins font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ================================================================
+       GALLERY PAGE — CUSTOM CSS
+       Everything inside this <style> block ONLY affects the gallery page.
+       You can change anything here without affecting any other page.
+       style.css controls the nav, footer and shared styles.
+    ================================================================ */
+
+    /* ── GALLERY PAGE BACKGROUND ──
+       Change the background color or gradient of the gallery page only */
+    .page-section {
+      background: linear-gradient(135deg, #13072e, #3f2182);
+      /* Change #13072e = dark start color of background */
+      /* Change #3f2182 = purple end color of background */
+      /* Change 135deg = direction of gradient (try 90deg or 180deg) */
+      padding: 100px 40px 80px;
+      /* 100px = top padding so nav doesn't overlap | ↑ increase = content moves lower */
+      /* 40px = left/right padding | ↑ increase = content becomes narrower */
+      /* 80px = bottom padding | ↑ increase = more space below content */
+      min-height: 100vh;
+      /* ↑ increase = page becomes taller | keep at 100vh for full screen height */
+      position: relative;
+      /* Needed for z-index to work — do not remove */
+      z-index: 1;
+      /* Keeps content above the body glow effect */
+    }
+
+    /* ── GALLERY GLOW EFFECT ──
+       Controls the purple glow that appears on this page only */
+    body::before {
+      z-index: -1;
+      /* -1 = glow goes BEHIND the text and content */
+      /* Change to 0 = glow appears between background and content */
+      top: 30%;
+      /* ↑ increase = glow moves DOWN the page | ↓ decrease = glow moves UP */
+      left: 50%;
+      /* Keep at 50% to stay centered | ↑ increase = moves RIGHT | ↓ decrease = moves LEFT */
+      width: 700px;
+      /* ↑ increase = glow becomes WIDER */
+      height: 700px;
+      /* ↑ increase = glow becomes TALLER */
+      opacity: 0.7;
+      /* ↑ increase to 1 = glow fully visible | ↓ decrease to 0 = glow invisible */
+    }
+
+    /* ── PAGE TITLE ──
+       Controls the "GALLERY" heading only on this page */
+    .page-title {
+      font-size: clamp(28px, 5vw, 52px);
+      /* ↑ increase max value (52px) = title becomes bigger */
+      font-weight: 800;
+      color: #e8dff8;
+      /* change hex = changes the "GALLERY" title color */
+      text-align: center;
+      margin-bottom: 14px;
+      letter-spacing: 3px;
+      /* ↑ increase = letters spread further apart */
+    }
+
+    /* ── TITLE UNDERLINE ──
+       The white line below the GALLERY title */
+    .page-title-line {
+      width: 60px;
+      /* ↑ increase = underline becomes longer */
+      height: 3px;
+      /* ↑ increase = underline becomes thicker */
+      background: #ffffff;
+      /* change hex = changes the underline color */
+      margin: 0 auto 50px;
+      /* 50px = space between underline and album grid | ↑ increase = more space */
+    }
+
+    /* ── ALBUM GRID ──
+       Controls the layout of album cards */
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      /* Change 3 = number of columns | 1 = single column | 2 = two columns */
+      gap: 30px;
+      /* ↑ increase = more space between album cards */
+      max-width: 1100px;
+      /* ↑ increase = albums spread wider on the page */
+      margin: 0 auto;
+      /* Centers the grid — do not change */
+    }
+
+    /* ── EACH ALBUM CARD ──
+       Controls the look of each event album box */
+    .album-card {
+      background: linear-gradient(135deg, #13072e, #3f2182);
+      /* Change colors to change album card background */
+      border: 1px solid rgba(121, 0, 226, 0.3);
+      /* 1px = border thickness | 0.3 = border visibility (↑ increase = more visible) */
+      border-radius: 18px;
+      /* ↑ increase = more rounded card corners | ↓ decrease = sharper corners */
+      overflow: hidden;
+      /* Clips the image to the rounded corners — do not remove */
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      /* 0.3s = speed of hover animation */
+    }
+
+    /* Card lifts and glows when hovered */
+    .album-card:hover {
+      transform: translateY(-8px);
+      /* ↑ increase = card lifts HIGHER on hover */
+      box-shadow: 0 20px 50px rgba(121, 0, 226, 0.4);
+      /* 0.4 = glow strength on hover | ↑ increase = stronger glow */
+      border-color: #e6c068;
+      /* change hex = border color when hovered */
+    }
+
+    /* ── ALBUM COVER PHOTO BOX ──
+       The image area at the top of each album card */
+    .album-cover {
+      width: 100%;
+      height: 220px;
+      /* ↑ increase = cover photo becomes TALLER | ↓ decrease = shorter */
+      background: linear-gradient(135deg, #1e0b5e, #13072e);
+      /* Shown when no real image is loaded */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      /* Size of placeholder emoji — remove when using real photos */
+      overflow: hidden;
+    }
+
+    /* Real image inside album cover */
+    .album-cover img {
+      width: 100%;
+      height: 220px;
+      /* Must match .album-cover height above */
+      object-fit: cover;
+      /* Crops to fill | change to "contain" to show full image */
+      display: block;
+    }
+
+    /* ── ALBUM TEXT AREA ──
+       The text section below each album cover photo */
+    .album-info {
+      padding: 18px 20px 22px;
+      /* 18px = top space | 22px = bottom space | 20px = left/right space */
+      /* ↑ increase top = more space above text */
+      /* ↑ increase bottom = more space below text */
+    }
+
+    /* Album event title */
+    .album-title {
+      font-size: 16px;
+      /* ↑ increase = album title text bigger */
+      font-weight: 700;
+      color: #ffffff;
+      /* change hex = album title color */
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    /* Album description */
+    .album-desc {
+      font-size: 13px;
+      /* ↑ increase = description text bigger */
+      color: #b0a0d0;
+      /* change hex = description text color */
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    /* Photo count e.g. "12 Photos" */
+    .album-count {
+      font-size: 12px;
+      /* ↑ increase = photo count label bigger */
+      font-weight: 600;
+      color: #e6c068;
+      /* change hex = photo count label color */
+    }
+
+    /* ── LIGHTBOX OVERLAY ──
+       Full-screen viewer when a photo is clicked */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      /* 0.92 = overlay darkness | ↑ increase = darker | ↓ decrease = lighter */
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    /* Photo counter e.g. "1 / 12" */
+    .lightbox-counter {
+      position: absolute;
+      top: 20px;
+      /* ↑ increase = counter moves lower */
+      left: 24px;
+      /* ↑ increase = counter moves right */
+      color: #ffffff;
+      /* change hex = counter text color */
+      font-size: 16px;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* X close button */
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      color: #ffffff;
+      /* change hex = X button color */
+      font-size: 36px;
+      /* ↑ increase = X button bigger */
+      font-weight: 300;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .lightbox-close:hover {
+      color: #e6c068;
+      /* change hex = X button hover color */
+    }
+
+    /* Main large photo in lightbox */
+    .lightbox-img {
+      max-width: 75vw;
+      /* ↑ increase = photo takes more screen width */
+      max-height: 78vh;
+      /* ↑ increase = photo takes more screen height */
+      object-fit: contain;
+      border-radius: 12px;
+      /* ↑ increase = photo corners more rounded */
+      box-shadow: 0 0 60px rgba(0,0,0,0.7);
+      display: block;
+    }
+
+    /* Caption below photo */
+    .lightbox-caption {
+      color: #c8b8e8;
+      /* change hex = caption text color */
+      font-size: 14px;
+      /* ↑ increase = caption text bigger */
+      margin-top: 16px;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      max-width: 600px;
+      padding: 0 20px;
+    }
+
+    /* Left arrow button */
+    .lightbox-prev {
+      position: absolute;
+      left: 20px;
+      /* ↑ increase = arrow moves right */
+      top: 50%;
+      transform: translateY(-50%);
+      color: #ffffff;
+      font-size: 44px;
+      /* ↑ increase = arrow bigger */
+      cursor: pointer;
+      background: rgba(0,0,0,0.4);
+      border: none;
+      border-radius: 50%;
+      width: 54px;
+      /* ↑ increase = arrow button bigger */
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Right arrow button */
+    .lightbox-next {
+      position: absolute;
+      right: 20px;
+      /* ↑ increase = arrow moves left */
+      top: 50%;
+      transform: translateY(-50%);
+      color: #ffffff;
+      font-size: 44px;
+      cursor: pointer;
+      background: rgba(0,0,0,0.4);
+      border: none;
+      border-radius: 50%;
+      width: 54px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Arrow hover effect */
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+      background: rgba(230, 192, 104, 0.3);
+      color: #e6c068;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .album-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .album-grid { grid-template-columns: 1fr; }
+      .page-section { padding: 100px 20px 60px; }
+      .lightbox-img { max-width: 90vw; max-height: 70vh; }
+      .lightbox-prev { left: 8px; width: 40px; height: 40px; font-size: 28px; }
+      .lightbox-next { right: 8px; width: 40px; height: 40px; font-size: 28px; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV BAR -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo-wrapper">
+        <img src="IMAGES/Untitled design (32).png" alt="Logo" class="navbar-logo" />
+        <div class="logo-text">
+          <p class="logo-line1"><b>Martha Mariam</b></p>
+          <p class="logo-line2"><b>Vanitha Samajam</b></p>
+        </div>
+      </div>
+      <ul class="nav-items">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#organisations">Organisations</a></li>
+        <li><a href="downloads.html">Downloads</a></li>
+      </ul>
+      <div class="menu-toggle" id="menuToggle">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <h2>Menu</h2>
+      <button class="close-menu" id="closeMenu">&times;</button>
+    </div>
+    <ul class="mobile-nav-items">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#organisations">Organisations</a></li>
+      <li><a href="downloads.html">Downloads</a></li>
+    </ul>
+  </div>
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <!-- GALLERY CONTENT -->
+  <section class="page-section">
+    <h2 class="page-title">GALLERY</h2>
+    <div class="page-title-line"></div>
+
+    <div class="album-grid">
+
+      <div class="album-card" onclick="openAlbum('album1')">
+        <div class="album-cover">⛪</div>
+        <div class="album-info">
+          <p class="album-title">Annual General Body Meeting 2024</p>
+          <p class="album-desc">Central Office, Kanjikuzhy, Kottayam — January 2024</p>
+          <p class="album-count">12 Photos</p>
+        </div>
+      </div>
+
+      <div class="album-card" onclick="openAlbum('album2')">
+        <div class="album-cover">🕊️</div>
+        <div class="album-info">
+          <p class="album-title">Women's Day Celebration 2024</p>
+          <p class="album-desc">All Diocese units across India — March 2024</p>
+          <p class="album-count">8 Photos</p>
+        </div>
+      </div>
+
+      <div class="album-card" onclick="openAlbum('album3')">
+        <div class="album-cover">🤝</div>
+        <div class="album-info">
+          <p class="album-title">Snehasparsam Charity Distribution</p>
+          <p class="album-desc">Beneficiaries across Kerala State — April 2024</p>
+          <p class="album-count">10 Photos</p>
+        </div>
+      </div>
+
+      <div class="album-card" onclick="openAlbum('album4')">
+        <div class="album-cover">📖</div>
+        <div class="album-info">
+          <p class="album-title">Vanitha Deepthi Magazine Launch</p>
+          <p class="album-desc">Headquarters, Kottayam — December 2024</p>
+          <p class="album-count">6 Photos</p>
+        </div>
+      </div>
+
+      <div class="album-card" onclick="openAlbum('album5')">
+        <div class="album-cover">🕯️</div>
+        <div class="album-info">
+          <p class="album-title">Leadership Training Camp 2024</p>
+          <p class="album-desc">Orthodox Seminary, Kottayam — June 2024</p>
+          <p class="album-count">15 Photos</p>
+        </div>
+      </div>
+
+      <div class="album-card" onclick="openAlbum('album6')">
+        <div class="album-cover">🌟</div>
+        <div class="album-info">
+          <p class="album-title">Spiritual Retreat 2024</p>
+          <p class="album-desc">Diocese Conference Center — August 2024</p>
+          <p class="album-count">9 Photos</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-counter" id="lightboxCounter">1 / 1</div>
+    <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
+    <button class="lightbox-prev" onclick="changePhoto(-1)">&#8249;</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="Gallery Photo" />
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+    <button class="lightbox-next" onclick="changePhoto(1)">&#8250;</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 by <strong>Martha Mariam Vanitha Samajam</strong></p>
+    <p class="footer-credit">Built by Shane Prince Tharakan</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+    /* ── ALBUM PHOTO DATA ──
+       Add your real photos here.
+       Change src to your image path e.g. "IMAGES/photo1.jpg"
+       Change caption to describe each photo */
+    var albums = {
+      album1: {
+        title: 'Annual General Body Meeting 2024',
+        photos: [
+          { src: 'IMAGES/placeholder.jpg', caption: 'Opening prayer at the General Body Meeting' },
+          { src: 'IMAGES/placeholder.jpg', caption: 'Address by the President' },
+          { src: 'IMAGES/placeholder.jpg', caption: 'Committee members during the session' },
+          { src: 'IMAGES/placeholder.jpg', caption: 'Resolution discussions' },
+          { src: 'IMAGES/placeholder.jpg', caption: 'Group photo of all members' },
+        ]
+      },
+      album2: {
+        title: "Women's Day Celebration 2024",
+        photos: [
+          { src: 'IMAGES/placeholder.jpg', caption: "Women's Day programme inauguration" },
+          { src: 'IMAGES/placeholder.jpg', caption: 'Cultural performance by members' },
+          { src: 'IMAGES/placeholder.jpg', caption: 'Award distribution ceremony' },
+        ]
+      },
+      album3: {
+        title: 'Snehasparsam Charity Distribution',
+        photos: [
+          { src: 'IMAGES/placeholder.jpg', caption: 'Aid distribution to beneficiaries' },
+          { src: 'IMAGES/placeholder.jpg', caption: 'Housing support handover' },
+          { src: 'IMAGES/placeholder.jpg', caption: 'Education aid recipients' },
+        ]
+      },
+      album4: {
+        title: 'Vanitha Deepthi Magazine Launch',
+        photos: [
+          { src: 'IMAGES/placeholder.jpg', caption: 'Magazine release ceremony' },
+          { src: 'IMAGES/placeholder.jpg', caption: 'First copy presented to President' },
+        ]
+      },
+      album5: {
+        title: 'Leadership Training Camp 2024',
+        photos: [
+          { src: 'IMAGES/placeholder.jpg', caption: 'Camp inauguration' },
+          { src: 'IMAGES/placeholder.jpg', caption: 'Training session in progress' },
+          { src: 'IMAGES/placeholder.jpg', caption: 'Bible study session' },
+        ]
+      },
+      album6: {
+        title: 'Spiritual Retreat 2024',
+        photos: [
+          { src: 'IMAGES/placeholder.jpg', caption: 'Retreat opening service' },
+          { src: 'IMAGES/placeholder.jpg', caption: 'Prayer session' },
+          { src: 'IMAGES/placeholder.jpg', caption: 'Holy Qurbana' },
+        ]
+      }
+    };
+
+    var currentPhotos = [];
+    var currentIndex = 0;
+
+    function openAlbum(albumKey) {
+      var album = albums[albumKey];
+      if (!album) return;
+      currentPhotos = album.photos;
+      currentIndex = 0;
+      showPhoto(currentIndex);
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showPhoto(index) {
+      var photo = currentPhotos[index];
+      document.getElementById('lightboxImg').src = photo.src;
+      document.getElementById('lightboxCaption').textContent = photo.caption;
+      document.getElementById('lightboxCounter').textContent = (index + 1) + ' / ' + currentPhotos.length;
+    }
+
+    function changePhoto(direction) {
+      currentIndex += direction;
+      if (currentIndex >= currentPhotos.length) currentIndex = 0;
+      if (currentIndex < 0) currentIndex = currentPhotos.length - 1;
+      showPhoto(currentIndex);
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.getElementById('lightboxImg').src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (!document.getElementById('lightbox').classList.contains('active')) return;
+      if (e.key === 'ArrowRight') changePhoto(1);
+      if (e.key === 'ArrowLeft') changePhoto(-1);
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) closeLightbox();
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1112 @@
+/* ================================================================
+   STYLE.CSS — Martha Mariam Vanitha Samajam
+   HOW TO USE COMMENTS:
+   ↑ increase value = described effect happens MORE
+   ↓ decrease value = described effect happens LESS
+   change hex = change that color
+   ALL CARD SIZES are controlled in the LEADERSHIP CARD section
+================================================================ */
+
+
+/* ── EASY EDIT VARIABLES ──
+   Change these values at the top to update the whole site quickly */
+:root {
+  /* ★ LEADERSHIP CARD SIZE CONTROLS ★ */
+  --card-width: 260px;        /* ↑ increase = ALL cards become WIDER | ↓ decrease = ALL cards become NARROWER */
+  --card-height: 420px;       /* ↑ increase = ALL cards become TALLER | ↓ decrease = ALL cards become SHORTER */
+  --card-img-height: 280px;   /* ↑ increase = photo inside card becomes TALLER | ↓ decrease = shorter photo */
+  --card-img-width: 100%;     /* ↑ change to px e.g. 180px = photo has fixed width | 100% = fills card width */
+  --card-gap: 35px;           /* ↑ increase = more space BETWEEN cards | ↓ decrease = cards closer together */
+  --card-radius: 25px;        /* ↑ increase = card corners MORE rounded | ↓ decrease = corners sharper */
+  --card-border: #7900e2;     /* change hex = changes the BORDER COLOR of all leader cards */
+  --card-padding: 25px;       /* ↑ increase = more space INSIDE each card */
+
+  /* ★ SITE COLOR CONTROLS ★ */
+  --bg-color: #13072e;        /* change hex = changes the MAIN PAGE background color */
+  --purple: #7900e2;          /* change hex = changes the PURPLE glow and border color */
+  --gold: #d4af37;            /* change hex = changes the GOLD used in leadership title */
+  --gradient-end: #3f2182;    /* change hex = changes the PURPLE END of all gradient boxes */
+}
+
+
+/* ================================================================
+   GLOBAL RESET
+================================================================ */
+
+/* Removes default spacing from every element */
+* {
+  margin: 0;              /* ↑ increase = space OUTSIDE every element */
+  padding: 0;             /* ↑ increase = space INSIDE every element */
+  box-sizing: border-box; /* Keeps padding inside element width — do not change */
+}
+
+/* Smooth scrolling when clicking anchor links */
+html {
+  scroll-behavior: smooth; /* Change to "auto" = instant jump, no smooth scroll */
+}
+
+/* Base font and background for the entire page */
+body {
+  font-family: 'Poppins', sans-serif; /* Change 'Poppins' to any Google Font name */
+  background-color: var(--bg-color);  /* Uses the --bg-color variable from :root above */
+  color: #ffffff;                     /* change hex = changes ALL default text color */
+  overflow-x: hidden;                 /* Prevents left-right scroll bar */
+  position: relative;                 /* Needed for glow effect — do not remove */
+}
+
+/* Purple radial glow in the hero background */
+body::before {
+  content: '';            /* Required to show this element */
+  position: absolute;     /* Positioned relative to the body */
+  top: 8.5%;               /* ↑ increase = glow moves DOWN | ↓ decrease = glow moves UP */
+  left: 50%;              /* keep at 50% to stay centered */
+  transform: translate(-50%, -50%); /* Centers the glow — do not change */
+  width: 600px;           /* ↑ increase = glow becomes WIDER */
+  height: 600px;          /* ↑ increase = glow becomes TALLER */
+  background: radial-gradient(circle, rgba(121,0,226,0.6) 0%, rgba(121,0,226,0.3) 40%, transparent 100%);
+  /* 121,0,226 = RGB of glow color (purple) | change all 3 numbers to change glow color */
+  /* 0.6 = center brightness | 0.3 = edge brightness | 40% = how far bright part spreads */
+  border-radius: 50%;     /* Keeps glow circular */
+  filter: blur(60px);     /* ↑ increase = glow becomes softer and bigger */
+  pointer-events: none;   /* Glow does not respond to clicks */
+  z-index: 0;             /* Stays BEHIND all content */
+}
+
+
+/* ================================================================
+   NAVIGATION BAR
+================================================================ */
+
+/* Sticky header that stays at the top when scrolling */
+.header {
+  position: sticky;       /* Sticks to top of screen when scrolling */
+  top: 0;                 /* Distance from top — keep at 0 */
+  width: 100%;            /* Full screen width */
+  background: rgba(19, 7, 46, 0.95);
+  /* 19,7,46 = nav background color (dark purple) | 0.95 = opacity (1 = fully solid) */
+  backdrop-filter: blur(10px); /* ↑ increase = more blur behind the nav */
+  border-bottom: 2px solid rgba(121, 0, 226, 0.3);
+  /* 2px = border thickness | 0.3 = border visibility (↑ increase = more visible) */
+  z-index: 1000;          /* Keeps nav above all content */
+  padding: 10px 20px;     /* 10px = top/bottom (↑ = taller nav) | 20px = left/right */
+}
+
+/* Inner nav row */
+.navbar {
+  display: flex;                  /* Side by side layout */
+  justify-content: space-between; /* Logo left, links right */
+  align-items: center;            /* Vertically centered */
+  width: 100%;
+  max-width: 1400px;              /* ↑ increase = nav content spreads wider */
+  margin: 0 auto;                 /* Centers the nav row */
+}
+
+/* Logo image + name text group */
+.logo-wrapper {
+  display: flex;       /* Side by side */
+  align-items: center; /* Vertically centered */
+  gap: 15px;           /* ↑ increase = more space between logo and name */
+  flex-shrink: 0;      /* Logo never shrinks on small screens */
+}
+
+/* Nav logo image */
+.navbar-logo {
+  height: 70px;         /* ↑ increase = logo becomes taller */
+  width: auto;          /* Keeps proportions */
+  object-fit: contain;  /* Shows full logo */
+  transform: scale(1.2); /* ↑ increase = logo appears bigger visually */
+}
+
+/* Text next to logo */
+.logo-text {
+  display: flex;
+  flex-direction: column; /* Stacks two name lines vertically */
+  gap: 2px;               /* ↑ increase = more space between name lines */
+}
+
+/* "Martha Mariam" line */
+.logo-line1 {
+  font-size: 14px;  /* ↑ increase = first name line bigger */
+  font-weight: 700;
+  color: #ffffff;   /* change hex = changes first name color */
+  margin: 0;
+  line-height: 1;
+}
+
+/* "Vanitha Samajam" line */
+.logo-line2 {
+  font-size: 14px;  /* ↑ increase = second name line bigger */
+  font-weight: 700;
+  color: #ffffff;   /* change hex = changes second name color */
+  margin: 0;
+  line-height: 1;
+}
+
+/* Desktop nav links row */
+.nav-items {
+  display: flex;
+  list-style: none;   /* No bullet points */
+  gap: 30px;          /* ↑ increase = more space between nav links */
+  align-items: center;
+  flex-wrap: nowrap;  /* All links on one line */
+}
+
+/* Each nav link */
+.nav-items a {
+  color: #ffffff;          /* change hex = changes nav link text color */
+  text-decoration: none;   /* No underline */
+  font-size: 14px;         /* ↑ increase = nav links text bigger */
+  font-weight: 500;
+  transition: all 0.3s ease; /* 0.3s = hover animation speed */
+  position: relative;      /* Needed for animated underline */
+  white-space: nowrap;
+}
+
+/* Nav link color when hovered */
+.nav-items a:hover {
+  color: var(--purple); /* Uses --purple from :root variables */
+}
+
+/* Animated underline that grows on hover */
+.nav-items a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;             /* ↑ increase (e.g. -10px) = underline moves lower */
+  left: 0;
+  width: 0;                 /* Starts at 0, grows to full width on hover */
+  height: 2px;              /* ↑ increase = thicker underline */
+  background-color: var(--purple);
+  transition: width 0.3s ease; /* Speed of underline growing */
+}
+
+/* Underline grows to full width on hover */
+.nav-items a:hover::after {
+  width: 100%;
+}
+
+/* Hamburger button — mobile only */
+.menu-toggle {
+  display: none;           /* Hidden on desktop */
+  flex-direction: column;
+  gap: 5px;                /* ↑ increase = more space between hamburger lines */
+  cursor: pointer;
+  padding: 5px;            /* ↑ increase = bigger tap area */
+  z-index: 1001;
+}
+
+/* Each hamburger line */
+.menu-toggle span {
+  display: block;
+  width: 25px;             /* ↑ increase = hamburger lines longer */
+  height: 3px;             /* ↑ increase = hamburger lines thicker */
+  background: #ffffff;     /* change hex = hamburger line color */
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Top line rotates to form top of X */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+
+/* Middle line disappears */
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+/* Bottom line rotates to form bottom of X */
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -6px);
+}
+
+
+/* ================================================================
+   MOBILE SIDEBAR MENU
+================================================================ */
+
+/* Sidebar panel — slides in from the right */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -280px;            /* Starts hidden off screen — must match width below */
+  width: 280px;             /* ↑ increase = sidebar becomes wider */
+  height: 100%;
+  background: #1a0d40;      /* change hex = sidebar background color */
+  z-index: 1002;
+  padding: 20px;            /* ↑ increase = more space inside sidebar */
+  transition: right 0.3s ease; /* 0.3s = slide speed | ↑ increase = slower */
+  box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+}
+
+/* Sidebar slides into view when "open" class is added */
+.mobile-menu.open {
+  right: 0;
+}
+
+/* Top of sidebar: "Menu" title + X button */
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;      /* ↑ increase = more space below sidebar header */
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* "Menu" title in sidebar */
+.mobile-menu-header h2 {
+  color: #ffffff;
+  font-size: 20px;          /* ↑ increase = "Menu" text bigger */
+  font-weight: 700;
+}
+
+/* X close button */
+.close-menu {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 28px;          /* ↑ increase = X button bigger */
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+/* List of sidebar links */
+.mobile-nav-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;                 /* ↑ increase = more space between sidebar links */
+}
+
+/* Each sidebar link */
+.mobile-nav-items a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;          /* ↑ increase = sidebar links bigger */
+  font-weight: 500;
+  padding: 12px 15px;       /* 12px = top/bottom tap area | 15px = left/right */
+  display: block;
+  border-radius: 10px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Sidebar link hover */
+.mobile-nav-items a:hover {
+  background: rgba(121, 0, 226, 0.2);
+  color: #e6c068;
+}
+
+/* Dark overlay behind sidebar */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5); /* 0.5 = overlay darkness */
+  z-index: 1001;
+  display: none;
+  cursor: pointer;
+}
+
+/* Overlay visible when "open" class added */
+.menu-overlay.open {
+  display: block;
+}
+
+
+/* ================================================================
+   HERO SECTION
+================================================================ */
+
+/* Full-screen welcome section */
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;        /* ↑ increase e.g. 110vh = hero section taller */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 0px 0px; /* 100px top = space for nav | ↑ increase = content moves lower */
+  margin-bottom: 600px;
+}
+
+/* Inner content wrapper */
+.hero-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: -10px;                /* ↑ increase = more space between logo, subtitle, title */
+  max-width: 1000px;
+  width: 100%;
+  margin-bottom: 600px; /* ↑ increase = more space below hero section | ↓ decrease = less space below hero */
+  margin-top: -40px; /* ↑ increase = moves entire hero content UP | ↓ decrease = moves hero content DOWN */
+}
+
+/* Box around hero logo */
+.logo-box {
+  padding: 0px;            /* ↑ increase = more space around hero logo */
+  margin-bottom: -50px;      /* ↑ increase = more space between logo and "Welcome To" */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Hero logo image */
+.hero-logo {
+  height: 420px;            /* ↑ increase = hero logo becomes taller */
+  width: auto;
+  object-fit: contain;
+}
+
+/* "Welcome To" text */
+.hero-subtitle-small {
+  font-size: 22px;          /* ↑ increase = "Welcome To" text bigger */
+  font-weight: 600;
+  color: #ffffff;
+  font-style: italic;       /* Remove this line to make it non-italic */
+  margin: 0;
+}
+
+/* Main big title */
+.hero-title {
+  font-size: clamp(32px, 5vw, 56px); /* 56px = max size | ↑ increase for bigger title */
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.3;         /* ↑ increase = more space between title lines */
+  margin: 0;
+}
+
+
+/* ================================================================
+   INTRO BLOCK — Image Left, Card Right
+================================================================ */
+
+/* Intro section */
+.intro-section {
+  position: relative;
+  z-index: 1;
+  padding: 60px 40px;       /* 60px = top/bottom space | 40px = left/right */
+}
+
+/* Two-column layout */
+.intro-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;                /* ↑ increase = more space between image and card */
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Left image column */
+.intro-image {
+  flex: 0 0 40%;            /* 40% = image column width | ↑ increase for wider image */
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+
+/* Left image */
+.intro-img {
+  width: 100%;
+  max-height: 800px;        /* ↑ increase = allows taller images */
+  object-fit: contain;
+  border-radius: 0px;      /* ↑ increase = more rounded image corners */
+  margin-right: 100px;       /* ↑ increase = more space between image and card */
+}
+
+/* Right text card */
+.intro-card {
+  flex: 1;
+  background: linear-gradient(135deg, var(--bg-color) 0%, var(--gradient-end) 100%);
+  /* Change --gradient-end in :root to change card background color */
+  padding: 20px 50px 40px;       /* 50px = top/bottom inside | 40px = left/right inside */
+  border-radius: 25px;      /* ↑ increase = more rounded card corners */
+  border: 1px solid rgba(121, 0, 226, 0.3);
+  margin-bottom: 150px;
+}
+
+/* Card heading */
+.intro-card-title {
+  font-size: clamp(24px, 3vw, 40px); /* 40px = max size | ↑ increase for bigger heading */
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 25px;      /* ↑ increase = more space between heading and paragraph */
+  line-height: 1.3;
+}
+
+/* Card paragraph */
+.intro-card-desc {
+  font-size: 24px;          /* ↑ increase = paragraph text bigger */
+  font-weight: 400;
+  color: #e8dff8;           /* change hex = paragraph text color */
+  line-height: 1.85;        /* ↑ increase = more space between lines */
+}
+
+
+/* ================================================================
+   LEADERSHIP SECTION
+   ★ ALL CARD SIZES ARE CONTROLLED BY THE :root VARIABLES AT TOP ★
+   To change card size: find :root at the top and change the values
+   --card-width    = card width
+   --card-height   = card height
+   --card-img-height = photo height inside card
+   --card-img-width  = photo width inside card
+   --card-gap      = space between cards
+   --card-radius   = card corner roundness
+   --card-border   = card border color
+   --card-padding  = space inside card
+================================================================ */
+
+/* Gold "OUR LEADERSHIP" title — only this title is gold */
+.leadership-title {
+  font-size: clamp(28px, 4vw, 48px); /* 48px = max size | ↑ increase for bigger title */
+  font-weight: 800;
+  color: var(--gold);                /* Uses --gold from :root variables */
+  text-align: center;
+  margin: 80px 20px 60px;            /* 80px = space above | 60px = space below | 20px = sides */
+  letter-spacing: 2px;               /* ↑ increase = letters more spread apart */
+  position: relative;
+  z-index: 1;
+}
+
+/* Leadership section container */
+.leadership-section {
+  position: relative;
+  z-index: 1;
+  padding: 20px 20px 80px;  /* 80px bottom = space below all cards */
+  background-color: var(--bg-color);
+}
+
+/* Left glow inside leadership section */
+.leadership-section::before {
+  content: '';
+  position: absolute;
+  top: 20%;                 /* ↑ increase = glow moves DOWN */
+  left: -10%;               /* ↑ more negative = glow further LEFT */
+  width: 500px;             /* ↑ increase = glow wider */
+  height: 500px;            /* ↑ increase = glow taller */
+  background: radial-gradient(circle, rgba(121,0,226,0.4) 0%, rgba(121,0,226,0.2) 40%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(60px);       /* ↑ increase = softer glow */
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Right glow inside leadership section */
+.leadership-section::after {
+  content: '';
+  position: absolute;
+  bottom: 20%;              /* ↑ increase = glow moves UP */
+  right: -10%;              /* ↑ more negative = glow further RIGHT */
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(121,0,226,0.4) 0%, rgba(121,0,226,0.2) 40%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── TOP ROW: 3 cards side by side ── */
+.leadership-row-top {
+  display: flex;            /* 3 cards in a row */
+  justify-content: center;  /* Centers the 3 cards horizontally */
+  gap: var(--card-gap);     /* Uses --card-gap from :root */
+  margin-bottom: var(--card-gap); /* Space between top row and bottom row */
+  position: relative;
+  z-index: 1;
+}
+
+/* ── BOTTOM ROW: 2 cards placed under the GAPS of the top 3 ── */
+/* The gap between card 1 and 2 = position for bottom card 1 */
+/* The gap between card 2 and 3 = position for bottom card 2 */
+.leadership-row-bottom {
+  display: flex;
+  justify-content: center;  /* Centers the 2 cards */
+  gap: var(--card-gap);     /* Same gap as top row */
+  /* The offset below moves the 2 bottom cards to align under the GAPS */
+  /* Each card is --card-width wide, each gap is --card-gap wide */
+  /* Offset = (card-width + card-gap) / 2 — this centers bottom cards under the gaps */
+  padding: 0 calc((var(--card-width) + var(--card-gap)) / 2);
+  /* ↑ change the /2 to /3 or /1.5 to fine-tune the offset if needed */
+  position: relative;
+  z-index: 1;
+}
+
+/* ── EACH INDIVIDUAL CARD ── */
+/* ★ To change ALL card sizes at once: edit the :root variables at the TOP of this file ★ */
+.leadership-card {
+  width: var(--card-width);           /* Uses --card-width from :root | change there to resize all */
+  min-height: var(--card-height);     /* Uses --card-height from :root | change there to resize all */
+  background: linear-gradient(135deg, var(--bg-color) 0%, var(--gradient-end) 100%);
+  /* To change card background: change --gradient-end in :root */
+  border-radius: var(--card-radius);  /* Uses --card-radius from :root | change there for all corners */
+  border: 2px solid var(--card-border); /* 2px = border thickness | uses --card-border color from :root */
+  padding: var(--card-padding);       /* Uses --card-padding from :root | change there for all inside space */
+  display: flex;
+  flex-direction: column;             /* Photo, name, role stacked vertically */
+  align-items: center;                /* Everything centered horizontally */
+  justify-content: flex-start;        /* Content starts from the TOP of the card */
+  text-align: center;
+  transition: all 0.3s ease;         /* 0.3s = hover animation speed */
+  flex-shrink: 0;                     /* Card never shrinks — always stays --card-width */
+}
+
+/* Card lifts and glows on hover */
+.leadership-card:hover {
+  transform: translateY(-10px);       /* ↑ increase = card lifts HIGHER on hover */
+  box-shadow: 0 20px 50px rgba(121, 0, 226, 0.4);
+  /* 20px = shadow distance | 50px = shadow spread | 0.4 = glow strength */
+}
+
+/* ── PHOTO INSIDE EACH CARD ── */
+/* ★ To change photo size: edit --card-img-height and --card-img-width in :root at the TOP ★ */
+.card-image {
+  width: var(--card-img-width);       /* Uses --card-img-width from :root */
+  height: var(--card-img-height);     /* Uses --card-img-height from :root */
+  border-radius: 15px;                /* ↑ increase = photo corners more rounded */
+  object-fit: cover;                  /* Crops photo to fill box | change to "contain" to show full photo */
+  margin-bottom: 15px;                /* ↑ increase = more space between photo and name */
+  border: 2px solid var(--card-border); /* Photo border color — same as card border */
+}
+
+/* Leader name text */
+.card-name {
+  font-size: 15px;    /* ↑ increase = name text bigger */
+  font-weight: 800;
+  color: #ffffff;     /* change hex = name text color */
+  margin: 10px 0 6px 0; /* 10px above | 6px below */
+  line-height: 1.3;
+}
+
+/* Leader role text */
+.card-role {
+  font-size: 13px;    /* ↑ increase = role text bigger */
+  font-weight: 600;
+  color: #b8a0d1;     /* change hex = role text color */
+  margin: 0;
+}
+
+
+/* ================================================================
+   OUR WINGS SECTION
+================================================================ */
+
+/* Wings section */
+.wings-section {
+  position: relative;
+  z-index: 1;
+  padding: 80px 40px;       /* 80px = top/bottom space | 40px = left/right */
+  background: linear-gradient(135deg, var(--bg-color), var(--gradient-end));
+}
+
+/* Wings title */
+.wings-title {
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: 700;
+  color: #ffffff;           /* change hex = wings title color */
+  text-align: center;
+  margin-bottom: 50px;      /* ↑ increase = more space below title */
+}
+
+/* 3-column wing cards grid */
+.wings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 = number of columns */
+  gap: 24px;                /* ↑ increase = more space between wing cards */
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Each wing card */
+.wing-card {
+  background: linear-gradient(135deg, var(--bg-color), var(--gradient-end));
+  border: 1px solid rgba(121, 0, 226, 0.35);
+  border-radius: 20px;      /* ↑ increase = more rounded corners */
+  padding: 32px 24px;       /* 32px = top/bottom inside | 24px = left/right inside */
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+/* Wing card hover */
+.wing-card:hover {
+  transform: translateY(-6px); /* ↑ increase = card lifts higher on hover */
+  border-color: #e6c068;
+}
+
+/* Wing card title */
+.wing-card-title {
+  font-size: 15px;    /* ↑ increase = wing title bigger */
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+/* Wing card description */
+.wing-card-desc {
+  font-size: 14px;    /* ↑ increase = description text bigger */
+  color: #c8b8e8;
+  line-height: 1.8;   /* ↑ increase = more space between lines */
+}
+
+
+/* ================================================================
+   CONNECT SECTION
+================================================================ */
+
+/* Connect section */
+.connect-section {
+  position: relative;
+  z-index: 1;
+  padding: 80px 40px;
+  background: linear-gradient(135deg, var(--bg-color), var(--gradient-end));
+}
+
+/* Two-column: address + map */
+.connect-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Equal columns | change to "1fr 1.5fr" for wider map */
+  gap: 60px;                      /* ↑ increase = more space between address and map */
+  align-items: start;
+}
+
+/* "CONNECT WITH US" heading */
+.connect-title {
+  font-size: clamp(22px, 3vw, 38px);
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+/* "HEAD QUARTERS" label */
+.hq-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #e6c068;            /* change hex = label color */
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* Address text */
+.connect-addr {
+  font-size: 15px;
+  color: #c8b8e8;
+  line-height: 2.1;          /* ↑ increase = more space between address lines */
+}
+
+/* Email link */
+.connect-addr a {
+  color: #e6c068;
+  text-decoration: none;
+}
+
+.connect-addr a:hover {
+  color: #f0d080;
+}
+
+/* Map container */
+.map-box {
+  border-radius: 16px;       /* ↑ increase = map corners more rounded */
+  overflow: hidden;
+  border: 1px solid rgba(121, 0, 226, 0.3);
+  height: 300px;             /* ↑ increase = map becomes taller */
+}
+
+/* Map iframe */
+.map-box iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+
+/* ================================================================
+   FOOTER
+================================================================ */
+
+/* Footer */
+.footer {
+  background: rgba(10, 4, 22, 0.98);
+  border-top: 1px solid rgba(121, 0, 226, 0.2);
+  text-align: center;
+  padding: 24px;             /* ↑ increase = footer taller */
+  font-size: 14px;
+  color: #b0a0d0;
+}
+
+.footer strong {
+  color: #e6c068;
+}
+
+.footer-credit {
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+
+/* ================================================================
+   SHARED NAV STYLES FOR ALL PAGES (gallery, events, about, downloads)
+================================================================ */
+
+/* Active nav link — highlighted gold on current page */
+.nav-items a.active {
+  color: var(--gold);
+}
+
+/* ── SHARED PAGE SECTION ── */
+/* Used by gallery, events, about, downloads pages */
+.page-section {
+  padding: 100px 40px 80px; /* 100px top = space for sticky nav */
+  background: linear-gradient(135deg, var(--bg-color), var(--gradient-end));
+  min-height: 100vh;
+}
+
+/* White page title used on all sub-pages */
+.page-title {
+  font-size: clamp(24px, 4vw, 44px);
+  font-weight: 800;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+/* White underline below page titles */
+.page-title-line {
+  width: 60px;
+  height: 3px;
+  background: #ffffff;
+  margin: 0 auto 50px;
+}
+
+/* ── GALLERY PAGE ── */
+
+/* 4-column image grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 = columns | ↑ increase for more columns */
+  gap: 16px;                             /* ↑ increase = more space between photos */
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Each gallery photo box */
+/* To add a real photo: replace emoji div with <img src="photo.jpg"> */
+.gallery-item {
+  aspect-ratio: 1;           /* Perfect square | change to 4/3 for landscape */
+  border-radius: 14px;       /* ↑ increase = more rounded photo corners */
+  background: linear-gradient(135deg, var(--bg-color), var(--gradient-end));
+  border: 1px solid rgba(121, 0, 226, 0.3);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44px;           /* Emoji size — remove when using real photos */
+}
+
+/* Photo grows slightly on hover */
+.gallery-item:hover {
+  transform: scale(1.04);    /* ↑ increase = grows more on hover */
+}
+
+/* Real photo inside gallery box */
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Note below gallery */
+.gallery-note {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  color: #b0a0d0;
+  font-style: italic;
+}
+
+/* ── EVENTS PAGE ── */
+
+/* Vertical list of event cards */
+.events-list {
+  max-width: 750px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;                 /* ↑ increase = more space between event cards */
+}
+
+/* Each event row */
+.event-card {
+  background: linear-gradient(135deg, var(--bg-color), var(--gradient-end));
+  border: 1px solid rgba(121, 0, 226, 0.3);
+  border-radius: 14px;       /* ↑ increase = more rounded event cards */
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  text-align: left;
+  transition: border-color 0.3s;
+}
+
+.event-card:hover {
+  border-color: #e6c068;
+}
+
+/* Date block */
+.event-date {
+  min-width: 65px;
+  text-align: center;
+}
+
+/* Big day number */
+.event-day {
+  font-size: 32px;           /* ↑ increase = bigger day number */
+  font-weight: 900;
+  color: #e6c068;
+  line-height: 1;
+}
+
+/* Month text */
+.event-month {
+  font-size: 13px;
+  color: #b0a0d0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Event name */
+.event-info h3 {
+  font-size: 16px;           /* ↑ increase = event name bigger */
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+/* Event location */
+.event-info p {
+  font-size: 14px;
+  color: #b0a0d0;
+}
+
+/* ── ABOUT PAGE ── */
+
+/* About content max width */
+.about-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Big "ABOUT" heading */
+.about-content h2 {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 40px;
+}
+
+/* Each about sub-section block */
+.about-block {
+  background: linear-gradient(135deg, var(--bg-color), var(--gradient-end));
+  border-radius: 16px;       /* ↑ increase = more rounded about blocks */
+  padding: 36px 40px;        /* ↑ increase = more space inside blocks */
+  margin-bottom: 28px;       /* ↑ increase = more space between blocks */
+  border: 1px solid rgba(121, 0, 226, 0.2);
+}
+
+/* Sub-heading inside about block */
+.about-block h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #e6c068;            /* Gold sub-headings in About */
+  margin-bottom: 16px;
+}
+
+/* Paragraph inside about block */
+.about-block p {
+  font-size: 15px;
+  color: #c8b8e8;
+  line-height: 1.9;
+  margin-bottom: 12px;
+}
+
+.about-block p:last-child {
+  margin-bottom: 0;
+}
+
+/* Motto text: centered white italic */
+.motto-text {
+  font-size: 18px;
+  font-weight: 700;
+  font-style: italic;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Numbered list inside about */
+.about-block ol {
+  padding-left: 20px;
+  color: #c8b8e8;
+  font-size: 15px;
+  line-height: 2;
+}
+
+/* Office bearers list */
+.about-block ul {
+  list-style: none;
+  color: #c8b8e8;
+  font-size: 15px;
+  line-height: 2.2;
+}
+
+.about-block ul li strong {
+  color: #e8dff8;
+}
+
+/* ── DOWNLOADS PAGE ── */
+
+/* Downloads list */
+.downloads-list {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;                 /* ↑ increase = more space between download rows */
+}
+
+/* Each download row */
+.dl-item {
+  background: linear-gradient(135deg, var(--bg-color), var(--gradient-end));
+  border: 1px solid rgba(121, 0, 226, 0.3);
+  border-radius: 14px;
+  padding: 20px 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: border-color 0.3s;
+}
+
+.dl-item:hover {
+  border-color: #e6c068;
+}
+
+/* File name */
+.dl-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* File size */
+.dl-size {
+  font-size: 13px;
+  color: #b0a0d0;
+  margin-top: 4px;
+}
+
+/* Download button */
+.dl-btn {
+  background: linear-gradient(135deg, #e6c068, #f0d080);
+  color: var(--bg-color);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.dl-btn:hover {
+  opacity: 0.8;
+}
+
+
+/* ================================================================
+   RESPONSIVE — TABLET (max 1024px)
+================================================================ */
+
+@media (max-width: 1024px) {
+
+  /* Cards slightly narrower on tablet */
+  .leadership-card {
+    width: 220px; /* ↑ increase = wider cards on tablets */
+  }
+
+  /* Fix bottom row offset for smaller card width */
+  .leadership-row-bottom {
+    padding: 0 calc((220px + var(--card-gap)) / 2);
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on tablets */
+  }
+}
+
+
+/* ================================================================
+   RESPONSIVE — MOBILE (max 768px)
+================================================================ */
+
+@media (max-width: 768px) {
+
+  /* Hide desktop links, show hamburger */
+  .nav-items { display: none; }
+  .menu-toggle { display: flex; }
+  .header { padding: 8px 16px; }
+
+  /* Hero adjustments */
+  .hero-title { font-size: 30px; }
+  .hero-logo { height: 160px; }
+
+  /* Intro stacks vertically */
+  .intro-container { flex-direction: column; gap: 30px; }
+  .intro-image { flex: none; width: 100%; }
+  .intro-section { padding: 60px 20px; }
+
+  /* Leadership stacks to 1 column */
+  .leadership-title { font-size: 30px; margin: 50px 15px 40px; }
+
+  .leadership-row-top,
+  .leadership-row-bottom {
+    flex-direction: column; /* Stack all cards vertically on mobile */
+    align-items: center;
+    padding: 0;
+  }
+
+  .leadership-card {
+    width: 90%;             /* Cards take 90% of screen width on mobile */
+    max-width: 320px;
+    min-height: auto;       /* Cards adjust height to content on mobile */
+  }
+
+  /* Wings, connect reduce to 1 column */
+  .wings-grid { grid-template-columns: 1fr; }
+  .connect-inner { grid-template-columns: 1fr; gap: 32px; }
+  .wings-section, .connect-section { padding: 60px 20px; }
+
+  /* Gallery 2 columns on mobile */
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Page sections on mobile */
+  .page-section { padding: 100px 20px 60px; }
+  .about-block { padding: 24px 20px; }
+}
+
+
+/* ================================================================
+   RESPONSIVE — SMALL MOBILE (max 480px)
+================================================================ */
+
+@media (max-width: 480px) {
+
+  .hero-title { font-size: 26px; }
+  .leadership-title { font-size: 24px; }
+  .leadership-card { width: 95%; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}

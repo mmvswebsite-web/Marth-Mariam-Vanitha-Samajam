@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<!-- Tells the browser this is an HTML5 webpage -->
+<html lang="en">
+<!-- lang="en" = page language is English -->
+
+<head>
+  <!-- Head section: settings, not visible on page -->
+
+  <!-- Correct character encoding so all symbols show properly -->
+  <meta charset="UTF-8" />
+
+  <!-- Makes the page look correct on mobile phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+
+  <!-- Text shown on the browser tab -->
+  <title>Martha Mariam Vanitha Samajam</title>
+
+  <!-- Links to your CSS file — all styling is inside style.css -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Loads the Poppins font from Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION BAR
+       Sticky top bar with logo and links
+  ============================================================ -->
+
+  <!-- Header wraps the nav bar -->
+  <header class="header">
+    <nav class="navbar">
+
+      <!-- Left side: logo image + name text -->
+      <div class="logo-wrapper">
+        <!-- Change src="IMAGES/your-logo.png" to update the nav logo -->
+        <img src="IMAGES/Untitled design (32).png" alt="Logo" class="navbar-logo" />
+        <div class="logo-text">
+          <!-- First line of name -->
+          <p class="logo-line1"><b>Martha Mariam</b></p>
+          <!-- Second line of name -->
+          <p class="logo-line2"><b>Vanitha Samajam</b></p>
+        </div>
+      </div>
+
+      <!-- Desktop nav links — hidden on mobile -->
+      <ul class="nav-items">
+        <li><a href="#home">Home</a></li>                        <!-- Scrolls to hero section -->
+        <li><a href="gallery.html">Gallery</a></li>             <!-- Opens gallery page -->
+        <li><a href="events.html">Events</a></li>               <!-- Opens events page -->
+        <li><a href="about.html">About</a></li>                 <!-- Opens about page -->
+        <li><a href="#organisations">Organisations</a></li>     <!-- Scrolls to wings section -->
+        <li><a href="downloads.html">Downloads</a></li>         <!-- Opens downloads page -->
+      </ul>
+
+      <!-- Hamburger icon: shown only on mobile -->
+      <div class="menu-toggle" id="menuToggle">
+        <span></span> <!-- Top bar of hamburger -->
+        <span></span> <!-- Middle bar of hamburger -->
+        <span></span> <!-- Bottom bar of hamburger -->
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- Mobile sidebar menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <h2>Menu</h2>
+      <button class="close-menu" id="closeMenu">&times;</button>
+    </div>
+    <ul class="mobile-nav-items">
+      <li><a href="#home">Home</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#organisations">Organisations</a></li>
+      <li><a href="downloads.html">Downloads</a></li>
+    </ul>
+  </div>
+
+  <!-- Dark overlay behind open sidebar -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <!-- ============================================================
+       HERO SECTION
+       Full-screen welcome area
+  ============================================================ -->
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+
+      <!-- Hero logo — change src to update -->
+      <div class="logo-box">
+        <img src="IMAGES/1.png" alt="Logo" class="hero-logo" />
+      </div>
+
+      <!-- "Welcome To" italic text -->
+      <h3 class="hero-subtitle-small">Welcome To</h3>
+
+      <!-- Main big title -->
+      <h2 class="hero-title">MARTHA MARIAM<br />VANITHA SAMAJAM</h2>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       INTRO BLOCK
+       Image on left, description card on right
+  ============================================================ -->
+
+  <section class="intro-section" id="intro">
+    <div class="intro-container">
+
+      <!-- Left image — change src to update -->
+      <div class="intro-image">
+        <img src="IMAGES/AAGVtcZw2Jk_1775741454737.png" alt="Martha Mariam" class="intro-img" />
+      </div>
+
+      <!-- Right text card -->
+      <div class="intro-card">
+        <h2 class="intro-card-title">Martha Mariam<br />Vanitha Samajam</h2>
+        <p class="intro-card-desc">
+          Martha Mariam Vanitha Samajam is the Women's wing of the Malankara Orthodox Church of India.
+          It is one of the major spiritual organization of the church combining all the female members.
+          It is spread throughout the world in all the 30 Dioceses and functioning in all parishes of the church.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       LEADERSHIP SECTION
+       Gold title + 5 leader cards
+       Top row: 3 cards
+       Bottom row: 2 cards centered under the gaps of the top row
+  ============================================================ -->
+
+  <!-- Gold title — only this title is gold -->
+  <h2 class="leadership-title">OUR LEADERSHIP</h2>
+
+  <section class="leadership-section">
+
+    <!-- Top row: 3 cards -->
+    <div class="leadership-row-top">
+
+      <!-- ── CARD 1: PATRON ──
+           To change card width: go to style.css and find .leadership-card-top
+           To change card height: find --card-height variable
+           To change photo size: find .card-image
+           To change photo inside: change src below -->
+      <div class="leadership-card">
+        <img src="IMAGES/Untitled design (35).png" alt="Patron" class="card-image" />
+        <h3 class="card-name">H.H. Baselios Marthoma Mathews III</h3>
+        <p class="card-role">Patron</p>
+      </div>
+
+      <!-- ── CARD 2: PRESIDENT ──
+           Change src to update this leader's photo -->
+      <div class="leadership-card">
+        <img src="IMAGES/Untitled design (34).png" alt="President" class="card-image" />
+        <h3 class="card-name">H. G. Dr. Yuhanon Mar Diascoros Metropolitan</h3>
+        <p class="card-role">President</p>
+      </div>
+
+      <!-- ── CARD 3: VICE PRESIDENT ──
+           Change src to update this leader's photo -->
+      <div class="leadership-card">
+        <img src="IMAGES/Untitled design (65).png" alt="Vice President" class="card-image" />
+        <h3 class="card-name">Fr. Philip Tharakan</h3>
+        <p class="card-role">Vice President</p>
+      </div>
+
+    </div>
+
+    <!-- Bottom row: 2 cards — placed under the gaps between the top 3 -->
+    <div class="leadership-row-bottom">
+
+      <!-- ── CARD 4: GENERAL SECRETARY ──
+           Change src to update this leader's photo -->
+      <div class="leadership-card">
+        <img src="IMAGES/Untitled design (65).png" alt="General Secretary" class="card-image" />
+        <h3 class="card-name">Prof. Mary Mathew</h3>
+        <p class="card-role">General Secretary</p>
+      </div>
+
+      <!-- ── CARD 5: TREASURER ──
+           Change src to update this leader's photo -->
+      <div class="leadership-card">
+        <img src="IMAGES/Untitled design (65).png" alt="Treasurer" class="card-image" />
+        <h3 class="card-name">Alice Koshy</h3>
+        <p class="card-role">Treasurer</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       OUR WINGS SECTION
+       id="organisations" is the scroll target for Organisations link
+  ============================================================ -->
+
+  <section class="wings-section" id="organisations">
+    <h2 class="wings-title">Our Wings</h2>
+    <div class="wings-grid">
+
+      <div class="wing-card">
+        <h3 class="wing-card-title">Snehasparsam Project</h3>
+        <p class="wing-card-desc">
+          This is the helping hand for the needy. Samajam is providing marriage aid,
+          sick aid, education aid &amp; providing for construction of houses for widows.
+        </p>
+      </div>
+
+      <div class="wing-card">
+        <h3 class="wing-card-title">Vanitha Deepthi</h3>
+        <p class="wing-card-desc">
+          It is the trimagazine released by Marth Mariam Vanitha Samajam from 2012.
+        </p>
+      </div>
+
+      <div class="wing-card">
+        <h3 class="wing-card-title">Navajyoti MOMS Charitable Society &amp; Chaithanya Samskarika Koottayma</h3>
+        <p class="wing-card-desc">
+          These are two projects under Marth Mariam Vanitha Samajam for the upliftment of women.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONNECT SECTION
+  ============================================================ -->
+
+  <section class="connect-section" id="connect">
+    <div class="connect-inner">
+
+      <div class="connect-info">
+        <h2 class="connect-title">CONNECT WITH US</h2>
+        <p class="hq-label">HEAD QUARTERS</p>
+        <div class="connect-addr">
+          Marth Mariam Vanitha Samajam Central Office<br />
+          Muttambalam P.O. Kanjikuzhy, Kottayam 4<br />
+          Kerala State, India<br /><br />
+          Phone: <strong>0481-2571840</strong><br />
+          Email: <a href="mailto:momsglobal@yahoo.in">momsglobal@yahoo.in</a>
+        </div>
+      </div>
+
+      <div class="map-box">
+        <!-- Change the src query to update the map location -->
+        <iframe
+          src="https://maps.google.com/maps?q=Marth+Mariam+Vanitha+Samajam+Kottayam+Kerala&output=embed"
+          allowfullscreen loading="lazy">
+        </iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+
+  <footer class="footer">
+    <p>© 2026 by <strong>Martha Mariam Vanitha Samajam</strong></p>
+    <p class="footer-credit">Built by Shane Prince Tharakan</p>
+  </footer>
+
+  <!-- Links to the JavaScript file -->
+  <script src="script.js"></script>
+
+</body>
+</html>

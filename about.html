@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<!-- About page -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Martha Mariam Vanitha Samajam</title>
+
+  <!-- Main site CSS — controls nav, footer, fonts -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Poppins font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ================================================================
+       ABOUT PAGE — CUSTOM CSS
+       Everything here ONLY affects the About page.
+       Change anything below without touching other pages.
+    ================================================================ */
+
+    /* ── ABOUT PAGE BACKGROUND ── */
+    .page-section {
+      background: linear-gradient(135deg, #13072e, #3f2182);
+      /* Change #13072e = dark start color */
+      /* Change #3f2182 = purple end color */
+      /* Change 135deg = gradient direction */
+      padding: 100px 40px 80px;
+      /* 100px top = space for nav | ↑ = content moves lower */
+      /* 40px = left/right | ↑ = content becomes narrower */
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── GLOW EFFECT CONTROL ── */
+    body::before {
+      z-index: -1;
+      /* -1 = glow goes BEHIND the text */
+      /* Change to 0 = glow appears in front of background */
+      top: 20%;
+      /* ↑ increase = glow moves DOWN | ↓ decrease = glow moves UP */
+      opacity: 0.6;
+      /* ↑ increase to 1 = glow fully visible | ↓ decrease = glow fades */
+    }
+
+    /* ── ABOUT CONTENT WIDTH ── */
+    .about-content {
+      max-width: 900px;
+      /* ↑ increase = content spreads wider | ↓ decrease = content more narrow */
+      margin: 0 auto;
+    }
+
+    /* ── "ABOUT" MAIN HEADING ── */
+    .about-content h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      /* ↑ increase max value (44px) = heading becomes bigger */
+      font-weight: 900;
+      color: #ffffff;
+      /* change hex = heading color */
+      margin-bottom: 40px;
+      /* ↑ increase = more space between heading and first block */
+    }
+
+    /* ── EACH ABOUT SUB-SECTION BLOCK ── */
+    .about-block {
+      background: linear-gradient(135deg, #13072e, #3f2182);
+      /* Change colors to change block background */
+      border-radius: 16px;
+      /* ↑ increase = more rounded block corners */
+      padding: 36px 40px;
+      /* 36px = top/bottom space inside | 40px = left/right space inside */
+      margin-bottom: 28px;
+      /* ↑ increase = more space between blocks */
+      border: 1px solid rgba(121, 0, 226, 0.2);
+      /* 0.2 = border visibility | ↑ increase = more visible border */
+    }
+
+    /* ── BLOCK SUB-HEADING ── */
+    .about-block h3 {
+      font-size: 18px;
+      /* ↑ increase = sub-heading bigger */
+      font-weight: 700;
+      color: #e6c068;
+      /* change hex = sub-heading color (currently gold) */
+      margin-bottom: 16px;
+    }
+
+    /* ── BLOCK PARAGRAPH TEXT ── */
+    .about-block p {
+      font-size: 15px;
+      /* ↑ increase = paragraph text bigger */
+      color: #c8b8e8;
+      /* change hex = paragraph text color */
+      line-height: 1.9;
+      /* ↑ increase = more space between lines */
+      margin-bottom: 12px;
+    }
+
+    .about-block p:last-child { margin-bottom: 0; }
+
+    /* ── MOTTO TEXT ── */
+    .motto-text {
+      font-size: 18px;
+      font-weight: 700;
+      font-style: italic;
+      color: #ffffff;
+      /* change hex = motto text color */
+      text-align: center;
+    }
+
+    /* ── NUMBERED LIST ── */
+    .about-block ol {
+      padding-left: 20px;
+      color: #c8b8e8;
+      /* change hex = numbered list text color */
+      font-size: 15px;
+      line-height: 2;
+      /* ↑ increase = more space between list items */
+    }
+
+    /* ── OFFICE BEARERS LIST ── */
+    .about-block ul {
+      list-style: none;
+      color: #c8b8e8;
+      font-size: 15px;
+      line-height: 2.2;
+    }
+
+    .about-block ul li strong {
+      color: #e8dff8;
+      /* change hex = bold label color in office bearers list */
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .page-section { padding: 100px 20px 60px; }
+      .about-block { padding: 24px 20px; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV BAR -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo-wrapper">
+        <img src="IMAGES/Untitled design (32).png" alt="Logo" class="navbar-logo" />
+        <div class="logo-text">
+          <p class="logo-line1"><b>Martha Mariam</b></p>
+          <p class="logo-line2"><b>Vanitha Samajam</b></p>
+        </div>
+      </div>
+      <ul class="nav-items">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="index.html#organisations">Organisations</a></li>
+        <li><a href="downloads.html">Downloads</a></li>
+      </ul>
+      <div class="menu-toggle" id="menuToggle">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <h2>Menu</h2>
+      <button class="close-menu" id="closeMenu">&times;</button>
+    </div>
+    <ul class="mobile-nav-items">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#organisations">Organisations</a></li>
+      <li><a href="downloads.html">Downloads</a></li>
+    </ul>
+  </div>
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <!-- ABOUT CONTENT -->
+  <section class="page-section">
+    <div class="about-content">
+
+      <h2>ABOUT</h2>
+
+      <div class="about-block">
+        <h3>A Brief History</h3>
+        <p>Marth Mariam Vanitha Samajam is the Women's wing of the Malankara Orthodox Church of India. It is one of the major spiritual organization of the church combining all the female members. It is spread throughout the world in all the 30 Dioceses and functioning in all parishes of the church.</p>
+        <p>The organization was founded in 1928 aimed at the spiritual progress of women. The founders named it "Marth Mariam Samajam" after the Blessed Virgin Mary whom they accepted as their interceding saint. It was started under the patronage of the Late Very Rev. M.C. Kuriakose Ramban and with the leadership of K.M. Annamma and co-workers.</p>
+      </div>
+
+      <div class="about-block">
+        <h3>Motto</h3>
+        <p class="motto-text">Prarthikkuka, Pravarthikkuka, Prakasikkuka.</p>
+      </div>
+
+      <div class="about-block">
+        <h3>Administration</h3>
+        <p>There is a central committee with all the 30 Dioceses of the church. H.H. is the Patron. According to the constitution — President, Vice President, General Secretary, Joint Secretary and Treasurer, the Secretaries from 30 Diocese & Diocese Representatives consist of the Central Committee.</p>
+        <p>Central Committee is the deciding body of Marth Mariam Vanitha Samajam. The Diocesan Metropolitan is the President of the diocesan committee. Vice President is a priest from that Diocese and the vicars lead the branches.</p>
+        <p>Retreats, Bible Classes, Competitions etc. are held on Parish, Group, Diocese & Akhila Malankara levels. There is a Leadership Training Camp held annually for 2 days. Annual examinations are conducted in October inside & outside India.</p>
+      </div>
+
+      <div class="about-block">
+        <h3>Present Concerns and Future Prospects</h3>
+        <ol>
+          <li>Preparing women to have theological training. Hundreds of women are now undergoing the Divyyabodhanam course of the Orthodox Seminary, Kottayam.</li>
+          <li>Training women to have social awareness, participation in political activities, decision-making at every level.</li>
+          <li>Conscientization program for women who are generally denied basic human hood in the family.</li>
+          <li>Attempts to find out women's potentials to a greater extent.</li>
+          <li>Training women to conduct prayer groups, to lead prayer, Bible classes, fellowship meetings and to preach the gospel.</li>
+          <li>Preparing cell to solve the problems of working women.</li>
+          <li>Seek solidarity with women's action groups on local and national level.</li>
+          <li>To enhance spiritual practices observing lent and other religious practices.</li>
+          <li>Attempts to find more Sunday school teachers with a commitment to Christ.</li>
+          <li>Continuing the struggle against dowry system and other social evils.</li>
+          <li>Efforts are done to get participation for women in the administration of the church.</li>
+        </ol>
+      </div>
+
+      <div class="about-block">
+        <h3>'Snehasparsam' Project</h3>
+        <p>This is the helping hand for the needy. Samajam is providing marriage aid, sick aid, education aid & providing for construction of houses for widows.</p>
+      </div>
+
+      <div class="about-block">
+        <h3>Vanitha Deepthi</h3>
+        <p>It is the trimagazine released by Marth Mariam Vanitha Samajam from 2012.</p>
+      </div>
+
+      <div class="about-block">
+        <h3>Navajyoti MOMS Charitable Society & Chaithanya Samskarika Koottayma</h3>
+        <p>These are two projects under Marth Mariam Vanitha Samajam for the upliftment of women.</p>
+      </div>
+
+      <div class="about-block">
+        <h3>Marth Mariam Vanitha Samajam Kendra Mandiram</h3>
+        <p>In Kanjikuzhy, Kottayam, Marth Mariam Vanitha Samajam had a building with office constructed in 1987. It is renovated & the first floor is completed in 2014. The Koodasa was on 26th August 2014. Every 2nd Wednesday there is Holy Qurbana & Bible Class in the Chapel of Kendra Mandiram.</p>
+        <p>Besides the central administrative office at Kottayam, almost all the Dioceses have their own headquarters and conference centers.</p>
+      </div>
+
+      <div class="about-block">
+        <h3>Achievements</h3>
+        <p>The Samajam was in the fore-front of the struggle to achieve equal ancestral property right for Christian women of Kerala.</p>
+        <p>Recently many changes occurred in the life of the Church. During Baptism, Girls are also permitted to enter the sanctuary and kiss the altar. Females are allowed to read the Bible during liturgy. Nuns are allowed to serve at the altar. Women are now elected as members and office-bearers in Parishes. Marth Mariam Vanitha Samajam activities are conducted in Gulf, America, UK & Europe.</p>
+      </div>
+
+      <div class="about-block">
+        <h3>Office Bearers</h3>
+        <ul>
+          <li><strong>President:</strong> H. G. Dr. Yuhanon Mar Diascoros Metropolitan</li>
+          <li><strong>Vice President:</strong> Fr. Philip Tharakan Thevalakara — 9633519075, 9447061819</li>
+          <li><strong>General Secretary:</strong> Prof. Mary Mathew — 9447145064</li>
+          <li><strong>Treasurer:</strong> Alice Koshy — 8369582238</li>
+          <li><strong>Office Secretary:</strong> Molly Varghese — 9961742164</li>
+        </ul>
+      </div>
+
+      <div class="about-block">
+        <h3>Head Quarters</h3>
+        <p>
+          Marth Mariam Vanitha Samajam Central Office<br />
+          Muttambalam P.O. Kanjikuzhy, Kottayam 4<br />
+          Kerala, India<br /><br />
+          Phone: 0481-2571840<br />
+          Email: momsglobal@yahoo.in
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 by <strong>Martha Mariam Vanitha Samajam</strong></p>
+    <p class="footer-credit">Built by Shane Prince Tharakan</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
