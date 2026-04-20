@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!-- Forms page -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forms — Martha Mariam Vanitha Samajam</title>
+
+  <!-- Main site CSS — controls nav, footer, fonts -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="responsive.css" />
+
+  <!-- Poppins font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ================================================================
+       FORMS PAGE — CUSTOM CSS
+       Everything here ONLY affects the Forms page.
+       Change anything below without touching other pages.
+    ================================================================ */
+
+    /* ── FORMS PAGE BACKGROUND ── */
+    .page-section {
+      background: linear-gradient(135deg, #13072e, #3f2182);
+      /* Change #13072e = dark start color */
+      /* Change #3f2182 = purple end color */
+      /* Change 135deg = gradient direction */
+      padding: 100px 40px 80px;
+      /* 100px top = space for nav */
+      /* 40px = left/right | ↑ = narrower content */
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── GLOW EFFECT CONTROL ── */
+    body::before {
+      z-index: -1;
+      /* -1 = glow goes BEHIND the text */
+      top: 25%;
+      /* ↑ increase = glow moves DOWN | ↓ = moves UP */
+      opacity: 0.6;
+      /* ↑ increase = glow brighter | ↓ = glow fades */
+    }
+
+    /* ── PAGE TITLE ── */
+    .page-title {
+      font-size: clamp(28px, 5vw, 52px);
+      /* ↑ increase max = title bigger */
+      font-weight: 800;
+      color: #ffffff;
+      /* change hex = title color */
+      text-align: center;
+      margin-bottom: 14px;
+      letter-spacing: 3px;
+    }
+
+    /* ── TITLE UNDERLINE ── */
+    .page-title-line {
+      width: 60px;
+      /* ↑ increase = underline longer */
+      height: 3px;
+      /* ↑ increase = underline thicker */
+      background: #ffffff;
+      /* change hex = underline color */
+      margin: 0 auto 50px;
+    }
+
+    /* ── FORMS LIST CONTAINER ── */
+    .forms-list {
+      max-width: 700px;
+      /* ↑ increase = list becomes wider */
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      /* ↑ increase = more space between form rows */
+    }
+
+    /* ── EACH FORM ROW ── */
+    .dl-item {
+      background: linear-gradient(135deg, #13072e, #3f2182);
+      /* Change colors to change form row background */
+      border: 1px solid rgba(121, 0, 226, 0.3);
+      /* 0.3 = border visibility | ↑ increase = more visible */
+      border-radius: 14px;
+      /* ↑ increase = more rounded corners */
+      padding: 20px 26px;
+      /* 20px = top/bottom inside | 26px = left/right inside */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      /* File name left, button right */
+      transition: border-color 0.3s;
+    }
+
+    /* Row border turns gold on hover */
+    .dl-item:hover {
+      border-color: #e6c068;
+      /* change hex = border hover color */
+    }
+
+    /* ── FILE NAME ── */
+    .dl-name {
+      font-size: 15px;
+      /* ↑ increase = file name text bigger */
+      font-weight: 600;
+      color: #ffffff;
+      /* change hex = file name color */
+    }
+
+    /* ── FILE DESCRIPTION ── */
+    .dl-description {
+      font-size: 13px;
+      /* ↑ increase = file description text bigger */
+      color: #b0a0d0;
+      /* change hex = file description text color */
+      margin-top: 4px;
+    }
+
+    /* ── DOWNLOAD BUTTON ── */
+    .dl-btn {
+      background: linear-gradient(135deg, #e6c068, #f0d080);
+      /* Change colors to change button background */
+      color: #13072e;
+      /* change hex = button text color */
+      border: none;
+      border-radius: 10px;
+      /* ↑ increase = more rounded button corners */
+      padding: 10px 20px;
+      /* 10px = top/bottom | 20px = left/right | ↑ increase = bigger button */
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      /* ↑ increase = button text bigger */
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    /* Button fades on hover */
+    .dl-btn:hover {
+      opacity: 0.8;
+      /* ↓ decrease = button fades more on hover */
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .page-section { padding: 100px 20px 60px; }
+      /* Stacks file info and button vertically on mobile */
+      .dl-item { flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV BAR -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo-wrapper">
+        <img src="IMAGES/Untitled design (32).png" alt="Logo" class="navbar-logo" />
+        <div class="logo-text">
+          <p class="logo-line1"><b>Martha Mariam</b></p>
+          <p class="logo-line2"><b>Vanitha Samajam</b></p>
+        </div>
+      </div>
+      <ul class="nav-items">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="forms.html" class="active" >Forms</a></li>
+        <li><a href="index.html#organisations">Organisations</a></li>
+        <li><a href="downloads.html" >Downloads</a></li>
+      </ul>
+      <div class="menu-toggle" id="menuToggle">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <h2>Menu</h2>
+      <button class="close-menu" id="closeMenu">&times;</button>
+    </div>
+    <ul class="mobile-nav-items">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="forms.html">Forms</a></li>
+      <li><a href="index.html#organisations">Organisations</a></li>
+      <li><a href="dioceses.html">Dioceses</a></li>
+      <li><a href="downloads.html">Downloads</a></li>
+    </ul>
+  </div>
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <!-- FORMS CONTENT -->
+  <section class="page-section">
+    <h2 class="page-title">FORMS</h2>
+    <div class="page-title-line"></div>
+
+    <!-- HOW TO LINK A REAL FILE:
+         Change: onclick="alert('Add your file link here')"
+         To:     onclick="window.open('FILES/yourfile.pdf')"
+         Put your PDF inside a folder called FILES next to this HTML file -->
+    <div class="forms-list">
+
+      <div class="dl-item">
+        <div>
+          <div class="dl-name">MMVS Membership Form</div>
+          <div class="dl-description">Google Form</div>
+        </div>
+        <button class="dl-btn" onclick="window.open('https://forms.gle/mSJr2a3fmSGnf46a9')">Fill Form</button>
+      </div>
+
+ 
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 by <strong>Martha Mariam Vanitha Samajam</strong></p>
+    <p class="footer-credit">Built by Shane Prince Tharakan</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
