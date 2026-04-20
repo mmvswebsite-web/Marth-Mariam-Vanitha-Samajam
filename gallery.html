@@ -345,27 +345,31 @@
   display: inline-block;
 }
 
-.lightbox-download {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: rgba(230, 192, 104, 0.9);
-  color: #000000;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 14px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: 'Poppins', sans-serif;
-  transition: background 0.2s, transform 0.2s;
-  z-index: 10000;
-}
+/* ── DOWNLOAD BUTTON ── */
+    .dl-btn {
+      background: linear-gradient(135deg, #e6c068, #f0d080);
+      /* Change colors to change button background */
+      color: #13072e;
+      /* change hex = button text color */
+      border: none;
+      border-radius: 10px;
+      /* ↑ increase = more rounded button corners */
+      padding: 10px 20px;
+      /* 10px = top/bottom | 20px = left/right | ↑ increase = bigger button */
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      /* ↑ increase = button text bigger */
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
 
-.lightbox-download:hover {
-  background: #e6c068;
-  transform: scale(1.05);
-}
+    /* Button fades on hover */
+    .dl-btn:hover {
+      opacity: 0.8;
+      /* ↓ decrease = button fades more on hover */
+    }
+
 
     /* Left arrow button */
     .lightbox-prev {
@@ -573,12 +577,13 @@
       album1: {
         title: 'Anna Fellowship First Annual Conference',
         photos: [
-          { src: 'GALLERY/674570827_26664715059883341_1475501629645415596_n.jpg', caption: 'Opening prayer at the General Body Meeting' },
+          { src: '<button class="dl-btn" onclick="alert('GALLERY/674570827_26664715059883341_1475501629645415596_n.jpg')">Download</button>', caption: 'Opening prayer at the General Body Meeting' },
           { src: 'GALLERY/674674625_26664712276550286_366364124745019905_n.jpg', caption: 'Lighting Cermony' },
           { src: 'GALLERY/674560934_26664681713220009_1972278917328813503_n.jpg', caption: 'Address by the Vice-President' },
           { src: 'GALLERY/672681820_26664681579886689_838726602213668940_n.jpg', caption: 'Skit by Committee members during the session' },
           { src: 'GALLERY/672687248_26659947650360082_9142503469500699771_n.jpg', caption: 'Prize distribution' },
           { src: 'GALLERY/674186730_26659947263693454_4188468501166062684_n.jpg', caption: 'Group photo of all members' },
+          
         ]
       },
       album2: {
