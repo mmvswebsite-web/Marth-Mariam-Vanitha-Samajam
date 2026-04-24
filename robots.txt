@@ -1,5 +1,5 @@
-# robots.txt for Martha Mariam Vanitha Samajam
-# https://mmvswebsite-web.github.io/Martha-Mariam-Vanitha-Samajam/
+# robots.txt for Marth Mariam Vanitha Samajam
+# https://mmvswebsite-web.github.io/Marth-Mariam-Vanitha-Samajam/
 
 # Allow all search engines to crawl everything
 User-agent: *
@@ -17,4 +17,4 @@ Allow: /
 Disallow: /.github/
 
 # Sitemap location - very important!
-Sitemap: https://mmvswebsite-web.github.io/Martha-Mariam-Vanitha-Samajam/sitemap.xml
+Sitemap: https://mmvswebsite-web.github.io/Marth-Mariam-Vanitha-Samajam/sitemap.xml
